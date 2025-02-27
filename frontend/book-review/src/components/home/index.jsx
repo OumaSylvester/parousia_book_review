@@ -54,14 +54,14 @@ const Books = () => {
                 {books.length > 0 ? (
                     books.map(book => (
                         <div key={book.id} className="col-md-4 mb-4">
-                            <div className="card h-100 shadow-sm">
-                                {/* <img
-                                    src={require(`../../images/book${Math.floor(Math.random() * 10) + 1}.jpg`)}
+                            <div className="card h-100 shadow-sm" onClick={(e)=>{handleBookDetail(book.id)}}>
+                                <img
+                                    src={book.imgName}
                                     alt={book.title}
                                     className="card-img-top"
                                     style={{ height: '200px', objectFit: 'cover' }}
-                                /> */}
-                                <div className="card-body book-card" onClick={(e)=>{handleBookDetail(book.id)}}>
+                                />
+                                <div className="card-body book-card">
                                     <h5 className="card-title">{book.title}</h5>
                                     <p className="card-text text-muted">By {book.author}</p>
                                 </div>

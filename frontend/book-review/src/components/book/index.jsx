@@ -39,15 +39,17 @@ const Book = () => {
     
     return (
         <div className="col-md-4 mb-4">
+             <button onClick={()=> navigate('/')}>Home</button>
+             <button onClick={handleAddReview}>Add Review</button>
             <div className="card h-100 shadow-sm">
-                {/* <img
-                    src={require(`../../images/book${Math.floor(Math.random() * 10) + 1}.jpg`)}
+               
+                <img
+                    src={book.imgName}
                     alt={book.title}
                     className="card-img-top"
                     style={{ height: '200px', objectFit: 'cover' }}
-                /> */}
-                <button onClick={()=> navigate('/')}>Home</button>
-                <button onClick={handleAddReview}>Add Review</button>
+                />
+                
                 <Modal                
                     show={show}
                     className="modal">

@@ -1,6 +1,6 @@
 const express = require('express');
 const data = require('./utils/data'); 
-const path = require('path')
+// const path = require('path')
 const cors = require('cors');
 const PORT = 3000;
 
@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 //Middleware to handle CORS
 app.use(cors());
-
+app.use('/assets', express.static('assets'));
 
 app.get('/books', async(req, res) => {
     res.status(200).json({'books': data.books, status: 200});
