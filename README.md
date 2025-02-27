@@ -1,15 +1,15 @@
 # Parousia Book Review Web APP
 Web app for book reviews
 
-For both the front-end and the backend, I have included node_modules. I chose not to add it to gitignore to allow quick setup.
+I have included node_modules for both the front end and the backend. I chose not to add it to git ignore to allow quick setup. So no install might be required.
 
-How to run backend:
+How to run Backend(Server):
 
 cd b*/b*
 
 node index.js
 
-How to run the frontend:
+How to run the Frontend(Client):
 
 cd fr*/b*
 
