@@ -63,7 +63,7 @@ const Book = () => {
               book.reviews.map((review, index) => (
                 <li key={index} className="list-group-item py-3 border rounded shadow-sm mb-3">
                   <p className="fw-bold mb-1 text-dark">{review?.reviewer}</p>
-                  <p className="text-muted mb-1">{review?.comment}</p>
+                  <p className="text-muted mb-1 text-break">{review?.comment}</p>
                   <span className="badge bg-warning text-dark">Rating: {review?.rating}</span>
                 </li>
               ))
