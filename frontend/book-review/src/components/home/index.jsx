@@ -26,7 +26,7 @@ const Books = () => {
         }
     };
 
-    const handleBookDetail = (bookID) => {
+    const handleBookClick = (bookID) => {
         navigate(`/books/${bookID}`);
     }
 
@@ -47,32 +47,44 @@ const Books = () => {
 
     return (
         <div className="container mt-5">
-        
-            <h1 className="text-center mb-4">Books</h1>
-            <div className="row">
-                <button onClick={()=> navigate('/add-book')}>Add Book</button>
-                {books.length > 0 ? (
-                    books.map(book => (
-                        <div key={book.id} className="col-md-4 mb-4">
-                            <div className="card h-100 shadow-sm" onClick={(e)=>{handleBookDetail(book.id)}}>
-                                <img
-                                    src={book.imgName}
-                                    alt={book.title}
-                                    className="card-img-top"
-                                    style={{ height: '200px', objectFit: 'cover' }}
-                                />
-                                <div className="card-body book-card">
-                                    <h5 className="card-title">{book.title}</h5>
-                                    <p className="card-text text-muted">By {book.author}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                ) : (
-                    <p className="text-center">No books available.</p>
-                )}
-            </div>
+        <h1 className="text-center mb-4 fw-bold text-primary">Books Collection</h1>
+        <div className="d-flex justify-content-center mb-4">
+          <button 
+            className="btn btn-primary px-4 py-2 shadow-sm" 
+            onClick={() => navigate("/add-book")}
+          >
+            + Add Book
+          </button>
         </div>
+        <div className="row">
+          {books.length > 0 ? (
+            books.map((book) => (
+              <div key={book.id} className="col-md-4 mb-4">
+                <div 
+                  className="card h-100 shadow-lg border-0 rounded-3 overflow-hidden" 
+                  onClick={()=>handleBookClick(book.id)}
+                  style={{ cursor: "pointer", transition: "transform 0.3s" }}
+                  onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+                  onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
+                >
+                  <img
+                    src={book.imgName}
+                    alt={book.title}
+                    className="card-img-top"
+                    style={{ height: "200px", objectFit: "cover" }}
+                  />
+                  <div className="card-body text-center">
+                    <h5 className="card-title fw-bold text-dark">{book.title}</h5>
+                    <p className="card-text text-muted">By {book.author}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p className="text-center text-muted">No books available.</p>
+          )}
+        </div>
+      </div>
     );
 };
 

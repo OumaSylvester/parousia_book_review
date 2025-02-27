@@ -4,26 +4,28 @@ import { POST } from '../../utils/constants';
 import getURLs from '../../services/urls';
 import { Form } from 'react-bootstrap';
 
-const AddReview = ({book_id, setShow}) => {
+const AddReview = ({book, setShow}) => {
   const [review, setReview] = useState({
         reviewer: '',
         comment: '',
         rating: 0,
     });
-    console.log('book_id', book_id);
+    console.log('book_id', book);
   const  handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('review', review);
-    await makeRequest(getURLs().addReview(book_id), POST, {'review': review} )
+    await makeRequest(getURLs().addReview(book.id), POST, {'review': review} )
     .then(response => {
         if (response && response.message) {
             alert(response.message);
             setShow(false);
+            book.reviews.push(review);
+            setReview({ reviewer: '',
+                comment: '',
+                rating: 0,});
         } else {
             console.error('No message found in the response');
         }
-    })
-
+    })   
     .catch(error => {
         console.error('Error adding review:', error);
     });
@@ -33,7 +35,7 @@ const AddReview = ({book_id, setShow}) => {
         <Form>
             <Form.Group className="mb-3" controlId="reviewer">
                 <Form.Label>Reviewer</Form.Label>
-                <Form.Control type="text" placeholder="Enter reviewer" onChange={(e) => setReview({ ...review, reviewer: e.target.value })}/>
+                <Form.Control type="text" placeholder="Your name" onChange={(e) => setReview({ ...review, reviewer: e.target.value })}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="comment">
                 <Form.Label>Comment</Form.Label>

@@ -27,5 +27,6 @@ let books = [
 ];
 
 module.exports = {
-    books
+    books,
+    imgBaseUrl
 };

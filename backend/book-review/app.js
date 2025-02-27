@@ -1,6 +1,5 @@
 const express = require('express');
 const data = require('./utils/data'); 
-// const path = require('path')
 const cors = require('cors');
 const PORT = 3000;
 
@@ -18,7 +17,7 @@ app.get('/books', async(req, res) => {
 
 app.post('/books', async(req, res) => {
     const book = req.body.book;
-    data.books.push({ id: data.books.length + 1, ...book, reviews: []});
+    data.books.push({ id: data.books.length + 1, imgName: `${data.imgBaseUrl}book-${Math.floor(Math.random() * 10)}.jpg`,  ...book, reviews: []});
     console.log('Books after addition');
     console.log(data.books);
     res.status(201).json({ message: 'Book added successfully', status: 201});

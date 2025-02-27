@@ -21,26 +21,49 @@ const AddBook = () => {
             
     }
 
-    const onSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         addBook();
     }
     return (
-        <div>
-            <h1>Add Book</h1>
-            <button onClick={()=> navigate('/')}>Home</button>
-            <Form>
-                <Form.Group className="mb-3" controlId="title">
-                    <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" placeholder="Enter title" onChange={(e) => setBook({ ...book, title: e.target.value })}/>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="author">
-                    <Form.Label>Author</Form.Label>
-                    <Form.Control type="text" placeholder="Enter author"  onChange={(e) => setBook({ ...book, author: e.target.value })}/>
-                </Form.Group>
-                <Form.Control type="submit" value="Submit" onClick={onSubmit}/>              
-            </Form>
+    <div className="container mt-5">
+      <h1 className="text-center mb-4 fw-bold text-primary">Add a New Book</h1>
+      <div className="d-flex justify-content-center mb-4">
+        <button className="btn btn-secondary px-4 py-2 shadow-sm" onClick={() => navigate("/")}>Home</button>
+      </div>
+      <div className="row justify-content-center">
+        <div className="col-md-6 col-lg-5 p-4 shadow rounded bg-light">
+          <Form>
+            <Form.Group className="mb-3" controlId="title">
+              <Form.Label className="fw-bold">Title</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Enter title" 
+                className="p-2" 
+                onChange={(e) => setBook({ ...book, title: e.target.value })}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="author">
+              <Form.Label className="fw-bold">Author</Form.Label>
+              <Form.Control 
+                type="text" 
+                placeholder="Enter author" 
+                className="p-2" 
+                onChange={(e) => setBook({ ...book, author: e.target.value })}
+              />
+            </Form.Group>
+            <div className="d-grid">
+              <Form.Control 
+                type="submit" 
+                value="Submit" 
+                className="btn btn-primary" 
+                onClick={handleSubmit}
+              />
+            </div>
+          </Form>
         </div>
+      </div>
+    </div>
     )
 }
 export default AddBook;
