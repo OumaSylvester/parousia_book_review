@@ -1,4 +1,4 @@
-# parousia_book_review
+# Parousia Book Review Web APP
 Web app for book reviews
 
 For both the front-end and the backend, I have included node_modules. I chose not to add it to gitignore to allow quick setup.
