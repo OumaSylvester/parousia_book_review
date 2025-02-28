@@ -8,7 +8,7 @@ const AddReview = ({ book, setShow }) => {
     const [review, setReview] = useState({
         reviewer: '',
         comment: '',
-        rating: 1, 
+        rating: 0, 
     });
     const [errors, setErrors] = useState({
         reviewer: '',
