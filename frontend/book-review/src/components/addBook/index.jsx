@@ -33,6 +33,7 @@ const AddBook = () => {
         await makeRequest(getURLs().books, POST, { book: book })
         .then(response => {
             if (response && response.message) {
+                setBook({ title: "", author: "" });
                 alert(response.message);
             } else {
                 console.error('No message found in the response');
